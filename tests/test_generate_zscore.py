@@ -11,10 +11,10 @@ def raw_test_data():
 								                    -0.3100868365, 1.860521019]})
 	yield data
 
-def test_for_zscore(raw_test_data):
+def test_standardize_vars(raw_test_data):
 	usl = us.UnsupervisedLearning(data=raw_test_data,
 		                        target_features=['count_example'])
 	usl.generate_standard_vars()
-	diff = usl._ads_data['count_example_zscore'] - raw_test_data['z_score_example']
-	print(usl._ads_data['count_example_zscore'])
-	assert sum(diff) == 0
+	output = round(usl._ads_data['count_example_zscore'],5).tolist()
+	expected = round(raw_test_data['z_score_example'],5).tolist()
+	assert output == expected

@@ -17,7 +17,7 @@ class UnsupervisedLearning:
         cols = list(self._ads_data.columns)
         for col in cols:
             col_zscore = col + '_zscore'
-            self._ads_data[col_zscore] = (self._ads_data[col] - self._ads_data[col].mean())/self._ads_data[col].std(ddof=0)
+            self._ads_data[col_zscore] = (self._ads_data[col] - self._ads_data[col].mean())/self._ads_data[col].std()
 
     def generate_pca(self):
         self.generate_standard_vars()
